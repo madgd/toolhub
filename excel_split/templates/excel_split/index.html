@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style type="text/css">
+        table.gridtable td {
+            border-width: 1px;
+            border-style: solid;
+            border-color: #666666;
+            background-color: #ffffff;
+        }
+    </style>
+    <meta charset="UTF-8">
+    <!--设置过期时间设置0为直接过期并清除缓存-->
+    <meta http-equiv="Expires" content="0">
+    <!--设置不缓存页面-->
+    <meta http-equiv="Pragma" content="no-cache">
+    <!--设置不修改消息存储-->
+    <meta http-equiv="Cache-Control" content="no-cache">
+    <!--同上-->
+    <meta http-equiv="Cache" content="no-cache">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="Excel按列拆分成多个表,Excel按列拆分,Excel拆分成多个表" />
+    <meta name="description" content="本工具支持以下功能:Excel按列拆分为多个表，操作如下：" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>按指定列拆分成多个表</title>
+
+    {% load static %}
+
+    <link rel="stylesheet" type="text/css" href="{% static 'excel_split/style.css' %}">
+</head>
+
+<body class="linear">
+    <h1>按列拆分excel为多表</h1>
+
+    <form action="{% url 'excel_split:split' %}" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <b>把Excel文件：</b><input name="excel" type="file" /><br></br>
+        <b>的第</b><input name="sheetNum" type="text" value="1" placeholder="1"/>个表</b>
+        或者 名称关键词(匹配第一个命中)包含 <input name="sheetNameKey" type="text" />的表<br></br>
+        <b>表头行数</b><input name="headLines" type="text" value="1" placeholder="1"/><b>(默认1)</b> <br></br>
+        <b>按第</b><input name="columnLabels" type="text" placeholder="A" value="A"/><b>列拆分成</b>(excel列号大写A、B、C...,如果多列用英文‘,’隔开，例如：A,B,C) <br></br>
+        <input type="checkbox" name="allSheet" value="true"><b>
+            按指定列名称自动匹配其他sheet中对应列，拆分整表(默认只拆分选定sheet)
+        </b></input>
+        <br></br>
+
+        <input type="submit" value="拆分">
+    </form>
+    <br></br>
+    <div><a href="../">其他工具</a></div>
+    <br></br>
+    <p></p>
+<!--    <p>如果内容多需要多等待一会(100个文件5分钟左右）</p>-->
+<!--    <p>下载文件一般位于：计算机(双击)->下载（左侧栏）,需要等待一会下载完成再打开</p>-->
+</body>
+
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style type="text/css">
+        table.gridtable td {
+            border-width: 1px;
+            border-style: solid;
+            border-color: #666666;
+            background-color: #ffffff;
+        }
+        p {
+            border-width: 0px;
+            margin-block-start: 0em;
+            margin-block-end: 0em;
+        }
+    </style>
+    <meta charset="UTF-8">
+    <!--设置过期时间设置0为直接过期并清除缓存-->
+    <meta http-equiv="Expires" content="0">
+    <!--设置不缓存页面-->
+    <meta http-equiv="Pragma" content="no-cache">
+    <!--设置不修改消息存储-->
+    <meta http-equiv="Cache-Control" content="no-cache">
+    <!--同上-->
+    <meta http-equiv="Cache" content="no-cache">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="常用工具集合" />
+    <meta name="description" content="常用工具集合列表：" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>常用工具</title>
+
+    {% load static %}
+
+    <link rel="stylesheet" type="text/css" href="{% static 'excel_split/style.css' %}">
+</head>
+
+<body class="linear">
+    <h1>常用工具</h1>
+
+    <a href="./excel_split" >excel按列拆分</a><br></br>
+    <a href="">excel按列合并(todo)</a><br></br>
+    <a href="">信息收集任务(todo)</a><br></br>
+
+    <br></br>
+    <br></br>
+    <p>todo list:</p>
+    <p>&nbsp&nbsp1. excel合并开发</p>
+    <p>&nbsp&nbsp2. 信息收集任务</p>
+    <p>&nbsp&nbsp&nbsp&nbsp2.1 截止时间</p>
+    <p>&nbsp&nbsp&nbsp&nbsp2.2 进度查看</p>
+    <p>&nbsp&nbsp&nbsp&nbsp2.3 邮件分发</p>
+    <p>&nbsp&nbsp&nbsp&nbsp2.4 邮件提醒</p>
+
+</body>
+
+</html>
