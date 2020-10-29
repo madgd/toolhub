@@ -19,32 +19,35 @@
     <!--同上-->
     <meta http-equiv="Cache" content="no-cache">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="keywords" content="Excel按列拆分成多个表,Excel按列拆分,Excel拆分成多个表" />
-    <meta name="description" content="本工具支持以下功能:Excel按列拆分为多个表，操作如下：" />
+    <meta name="keywords" content="Excel多个表合并" />
+    <meta name="description" content="本工具支持以下功能:Excel多个表合并，支持多sheet分别合并，操作如下：" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>按指定列拆分成多个表</title>
+    <title>多个表合并</title>
 
     {% load static %}
 
-    <link rel="stylesheet" type="text/css" href="{% static 'excel_split/style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'excel_merge/style.css' %}">
 </head>
 
 <body class="linear">
-    <h1>按列拆分excel为多表</h1>
+    <h1>excel多表合并</h1>
 
-    <form action="{% url 'excel_split:split' %}" method="post" enctype="multipart/form-data">
+    <form action="{% url 'excel_merge:merge' %}" method="post" enctype="multipart/form-data">
         {% csrf_token %}
-        <b>把Excel文件：</b><input name="excel" type="file" /><br></br>
+        <b>把多个Excel文件：</b><input name="excel" type="file" multiple="multiple" /><br></br>
+        <b>中，包含</b><input name="excelNameKey" type="text" value="" placeholder="默认全部"/>关键词的部分excel<br></br>
         <b>的第</b><input name="sheetNum" type="text" value="1" placeholder="1"/>个sheet</b>
         或者 名称关键词(匹配第一个命中)包含 <input name="sheetNameKey" type="text" />的sheet<br></br>
         <b>表头行数</b><input name="headLines" type="text" value="1" placeholder="1"/><b>(默认1)</b> <br></br>
-        <b>按第</b><input name="columnLabels" type="text" placeholder="A" value="A"/><b>列拆分成</b>(excel列号大写A、B、C...,如果多列用英文‘,’隔开，例如：A,B,C) <br></br>
+        <input type="checkbox" name="rmDup" value="true"><b>
+            按行去重
+        </b></input>
         <input type="checkbox" name="allSheet" value="true"><b>
-            按指定列名称自动匹配其他sheet中对应列，拆分整表(默认只拆分选定sheet)
+            按sheet位置合并全部表
         </b></input>
         <br></br>
 
-        <input type="submit" value="拆分">
+        <input type="submit" value="合并">
     </form>
     <br></br>
     <div><a href="../">其他工具</a></div>

@@ -19,5 +19,6 @@ from django.urls import path, include
 urlpatterns = [
     path('', include('index.urls')),
     path('admin/', admin.site.urls),
-    path('excel_split/', include('excel_split.urls'))
+    path('excel_split/', include('excel_split.urls')),
+    path('excel_merge/', include('excel_merge.urls'))
 ]

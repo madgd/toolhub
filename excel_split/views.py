@@ -23,7 +23,6 @@ def index(request):
     template_name = 'excel_split/index.html'
     context = {}
     return render(request, template_name, context)
-    # return HttpResponse("Hello, world. You're at the excel_split index.")
 
 class UploadFileForm(forms.Form):
     excel = forms.FileField()
@@ -49,7 +48,7 @@ def split(request):
             sheetNameKey = request.POST['sheetNameKey']
             allSheet = 'allSheet' in request.POST
             print(allSheet)
-            outputPath = excelSplitBySheet(savedExcel, columnLabels=columnLabels, headLines=headLines, \
+            outputPath, err = excelSplitBySheet(savedExcel, columnLabels=columnLabels, headLines=headLines, \
                               sheetNum=sheetNum, sheetNameKey=sheetNameKey, allSheet=allSheet)
             print(outputPath)
             # zip excel
@@ -70,5 +69,3 @@ def split(request):
     else:
         return HttpResponse("need post")
 
-
-    return HttpResponse("test: %s" % (request.POST['headLines']))
