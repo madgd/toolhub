@@ -32,6 +32,7 @@
 <body class="linear">
     <h1>按列拆分excel为多表</h1>
 
+    <h3 style="color:red">目前依赖库到xlsx格式支持不好，如果报错可尝试在本地另存为xls在进行操作</h3>
     <form action="{% url 'excel_split:split' %}" method="post" enctype="multipart/form-data">
         {% csrf_token %}
         <b>把Excel文件：</b><input name="excel" type="file" /><br></br>
