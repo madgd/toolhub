@@ -32,7 +32,7 @@
 <body class="linear">
     <h1>按列拆分excel为多表</h1>
 
-    <h3 style="color:red">目前依赖库到xlsx格式支持不好，如果报错可尝试在本地另存为xls在进行操作</h3>
+    <h3 style="color:red">目前依赖库仅支持xlsx格式，xls格式可在本地另存为xlsx再进行操作</h3>
     <form action="{% url 'excel_split:split' %}" method="post" enctype="multipart/form-data">
         {% csrf_token %}
         <b>把Excel文件：</b><input name="excel" type="file" /><br></br>
@@ -43,7 +43,11 @@
         <input type="checkbox" name="allSheet" value="true"><b>
             按指定列名称自动匹配其他sheet中对应列，拆分整表(默认只拆分选定sheet)
         </b></input>
-        <br></br>
+        <input type="checkbox" name="styles" checked><b>
+            保留原表样式(不保留处理速度提升，默认保留)
+        </b></input>
+        <br>
+        <br>
 
         <input type="submit" value="拆分">
     </form>
@@ -51,8 +55,6 @@
     <div><a href="../">其他工具</a></div>
     <br></br>
     <p></p>
-<!--    <p>如果内容多需要多等待一会(100个文件5分钟左右）</p>-->
-<!--    <p>下载文件一般位于：计算机(双击)->下载（左侧栏）,需要等待一会下载完成再打开</p>-->
 </body>
 
 </html>

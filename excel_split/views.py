@@ -47,9 +47,10 @@ def split(request):
             sheetNum = int(request.POST["sheetNum"])
             sheetNameKey = request.POST['sheetNameKey']
             allSheet = 'allSheet' in request.POST
-            print(allSheet)
+            styles = 'styles' in request.POST
+            print(styles)
             outputPath, err = excelSplitBySheet(savedExcel, columnLabels=columnLabels, headLines=headLines, \
-                              sheetNum=sheetNum, sheetNameKey=sheetNameKey, allSheet=allSheet)
+                              sheetNum=sheetNum, sheetNameKey=sheetNameKey, allSheet=allSheet, styles=styles)
             print(outputPath)
             # zip excel
             zip_file = ".".join(savedExcel.split(".")[:-1]) + "_split_by_%s.zip" % columnLabels

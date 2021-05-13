@@ -59,8 +59,9 @@ def merge(request):
             sheetNameKey = request.POST['sheetNameKey']
             allSheet = 'allSheet' in request.POST
             rmDup = 'rmDup' in request.POST
+            styles = 'styles' in request.POST
             outputPath, err = excelMergeBySheet(savedExcels, headLines=headLines, sheetNum=sheetNum,
-                                                sheetNameKey=sheetNameKey, allSheet=allSheet, rmDup=rmDup)
+                                                sheetNameKey=sheetNameKey, allSheet=allSheet, rmDup=rmDup, styles=styles)
             # return file
             download_file = open(outputPath, 'rb')
             response = FileResponse(download_file)
