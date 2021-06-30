@@ -15,10 +15,15 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.conf.urls import url, include
+import notice_manage.urls
+from django.views.generic import TemplateView
 
 urlpatterns = [
-    path('', include('index.urls')),
+    # path('', include('index.urls')),
     path('admin/', admin.site.urls),
     path('excel_split/', include('excel_split.urls')),
-    path('excel_merge/', include('excel_merge.urls'))
+    path('excel_merge/', include('excel_merge.urls')),
+    url(r'^api/', include(notice_manage.urls)),
+    url(r'^$', TemplateView.as_view(template_name="index.html")),
 ]
